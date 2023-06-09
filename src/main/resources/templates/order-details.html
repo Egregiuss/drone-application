@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Order Details</title>
+</head>
+<body>
+<h1>Order Details</h1>
+
+<h2>Order ID: <span th:text="${processedOrder.id}"></span></h2>
+<h2>Customer Name: <span th:text="${processedOrder.customer.name}"></span></h2>
+<h2>Customer Address: <span th:text="${processedOrder.customer.address}"></span></h2>
+
+<h2>Selected Products:</h2>
+<ul>
+  <li th:each="product : ${processedOrder.products}">
+    <span th:text="${product.name}"></span> |
+    <span th:text="${product.price}"></span> |
+    <span th:text="${product.weight}"></span>
+  </li>
+</ul>
+
+<h2>Total Price: <span th:text="${processedOrder.calculateTotalPrice()}"></span></h2>
+<h2>Total Weight: <span th:text="${processedOrder.calculateTotalWeight()}"></span></h2>
+</body>
+</html>

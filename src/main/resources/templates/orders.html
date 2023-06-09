@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Order Form</title>
+</head>
+<body>
+<h1>Order Form</h1>
+<form th:action="@{/orders}" th:object="${orderObject}" method="post">
+    <label for="name">Name:</label>
+    <input type="text" id="name" th:field="*{customerName}" />
+
+    <label for="address">Address:</label>
+    <input type="text" id="address" th:field="*{address}" />
+
+    <label for="phoneNumber">Phone Number:</label>
+    <input type="text" id="phoneNumber" th:field="*{phoneNumber}" />
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" th:field="*{email}" />
+
+    <h2>Product Checklist:</h2>
+    <div th:each="product : ${productList}">
+        <label>
+            <input type="checkbox" th:value="${product.id}" name="selectedProducts"/>
+            <span th:text="${product.name}"></span>
+            <span th:text="${product.price}"></span>
+            <span th:text="${product.weight}"></span>
+        </label>
+    </div>
+
+    <button type="submit">Submit</button>
+</form>
+</body>
+</html>
